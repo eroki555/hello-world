@@ -18,7 +18,7 @@ from adxl355 import ADXL355  # pylint: disable=wrong-import-position
 device = ADXL355()           # pylint: disable=invalid-name
 
 loop_num = 4000
-loop_int = 0.000025
+loop_int = 0.000025 #可変
 
 x = []
 y = []
