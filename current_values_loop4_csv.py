@@ -1,3 +1,5 @@
+#!/usr/bin/env
+
 """
 Usage example for ADXL355 Python library
 
@@ -12,12 +14,18 @@ import csv
 import pandas as pd
 
 t00=time.time()
+#print(sys.path)
 
 sys.path.append('/home/pi/Documents/')
 
-from adxl355 import ADXL355  # pylint: disable=wrong-import-position
+#print(sys.path)
 
-device = ADXL355()           # pylint: disable=invalid-name
+#time.sleep(1)
+
+from adxl355 import ADXL355
+
+device = ADXL355()
+
 
 loop_num = 4096
 loop_int = 0.00007 #可変
@@ -72,7 +80,7 @@ while index <= 50:
 	print('write csv', t4-t3)
 	print('get data and write csv', t4-t1)
 	
-'''
+	'''
 	x = data[:,0]
 	y = data[:,1]
 	z = data[:,2]
@@ -107,7 +115,8 @@ while index <= 50:
 			#print(i)
 			z_dup.append(i)
 			
-	#print("x_len", len(x_dup))
-	#print("y_len", len(y_dup))
-	#print("z_len", len(z_dup))
-'''
+	print("x_len", len(x_dup))
+	print("y_len", len(y_dup))
+	print("z_len", len(z_dup))
+	'''
+
