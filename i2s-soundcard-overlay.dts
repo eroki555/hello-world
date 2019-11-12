@@ -1,0 +1,49 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "rockchip,rk3399-i2s","rockchip,rk3066-i2s";
+
+    fragment@0 { 
+        target-path = "/"; 
+        __overlay__ { 
+            rt5651: rt5651 {
+                #sound-dai-cells = <0>;
+		compatible = "rockchip,rt5651";
+		rt5651,format = "i2s";
+                status = "okay";
+            };
+        }; 
+    }; 
+
+    fragment@1 {
+        target = <&i2s0>;
+	__overlay__ {
+		status = "okay";
+		pinctrl-0 = <&i2s0_pins>;
+		sound-dai = <&rt5651>;
+		pinctrl-names = "default";
+	};
+    };
+
+    fragment@2 {
+	target-path = "/";
+	__overlay__ {
+		sound_i2s {
+			compatible = "simple-audio-card";
+			simple-audio-card,name = "I2S-master";
+			simple-audio-card,mclk-fs = <256>;
+			simple-audio-card,format = "i2s";
+	                status = "okay";
+
+			simple-audio-card,cpu {
+				sound-dai = <&i2s0>;
+			};
+
+			simple-audio-card,codec {
+				sound-dai = <&rt5651>;
+			};
+		};
+	};
+    };
+};
