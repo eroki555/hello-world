@@ -2091,7 +2091,6 @@
 		rockchip,playback-channels = <0x8>;
 		rockchip,capture-channels = <0x8>;
 		#sound-dai-cells = <0x0>;
-		phandle = <0xdf>;
 	};
 
 	i2s@ff890000 {
@@ -3973,26 +3972,6 @@
 			sound-dai = <0xce>;
 		};
 	};
-
-        mems-sound {
-		status = "okay";
-		compatible = "simple-audio-card";
-		pinctrl-names = "default";
-		simple-audio-card,name = "admp441,rt5651-codec";
-		simple-audio-card,format = "i2s";
-		simple-audio-card,mclk-fs = <0x100>;
-		
-		simple-audio-card,cpu {
-			sound-dai = <0xdf>;
-		};
-
-		simple-audio-card,codec {
-			sound-dai = <0xce>;
-		};
-	};
-
-
-
 
 	dw-hdmi-audio {
 		status = "disabled";

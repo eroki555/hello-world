@@ -856,6 +856,9 @@
 		i2c-scl-falling-time-ns = <0x1e>;
 		clock-frequency = <0x30d40>;
 
+
+
+
 		rt5651@1a {
 			#sound-dai-cells = <0x0>;
 			compatible = "rockchip,rt5651";
@@ -921,9 +924,10 @@
 		interrupts = <0x0 0x22 0x4 0x0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <0x3f>;
+		clock-frequency = <0x186a0>;
 		#address-cells = <0x1>;
 		#size-cells = <0x0>;
-		status = "disabled";
+		status = "okay";
 	};
 
 	i2c@ff140000 {
@@ -1007,7 +1011,7 @@
 		reg-io-width = <0x4>;
 		pinctrl-names = "default";
 		pinctrl-0 = <0x46>;
-		status = "okay";
+		status = "disabled";
 		assigned-clocks = <0x8 0xad>;
 		assigned-clock-parents = <0x8 0x5>;
 	};
@@ -1039,11 +1043,12 @@
 		#size-cells = <0x0>;
 		status = "disabled";
 		phandle = <0x105>;
+
 		spidev {
-		    compatible = "spidev";
-		    status = "okay";
-		    reg = <0x0>;
-		    spi-max-frequency = <0x989680>;
+			compatible = "spidev";
+			status = "okay";
+			reg = <0x0>;
+			spi-max-frequency = <0x989680>;
 		};
 	};
 
@@ -1058,13 +1063,13 @@
 		#address-cells = <0x1>;
 		#size-cells = <0x0>;
 		status = "okay";
-                spidev {
-                    compatible = "spidev";
-                    status = "okay";
-                    reg = <0x0>;
-                    spi-max-frequency = <0x989680>;
-                };
 
+		spidev {
+			compatible = "spidev";
+			status = "okay";
+			reg = <0x0>;
+			spi-max-frequency = <0x989680>;
+		};
 	};
 
 	spi@ff1e0000 {
@@ -2091,6 +2096,7 @@
 		rockchip,playback-channels = <0x8>;
 		rockchip,capture-channels = <0x8>;
 		#sound-dai-cells = <0x0>;
+                sound-dai = <0xce>;
 		phandle = <0xdf>;
 	};
 
@@ -2834,10 +2840,6 @@
 			i2c3-xfer {
 				rockchip,pins = <0x4 0x11 0x1 0xc1 0x4 0x10 0x1 0xc1>;
 				phandle = <0x3f>;
-			};
-
-			i2c3_gpio {
-				rockchip,pins = <0x4 0x11 0x0 0xc1 0x4 0x10 0x0 0xc1>;
 			};
 		};
 
@@ -3970,18 +3972,18 @@
 		};
 
 		simple-audio-card,codec {
-			sound-dai = <0xce>;
+			sound-dai = <0x00>;
 		};
 	};
 
-        mems-sound {
+	mems-sound {
 		status = "okay";
 		compatible = "simple-audio-card";
 		pinctrl-names = "default";
 		simple-audio-card,name = "admp441,rt5651-codec";
 		simple-audio-card,format = "i2s";
 		simple-audio-card,mclk-fs = <0x100>;
-		
+
 		simple-audio-card,cpu {
 			sound-dai = <0xdf>;
 		};
@@ -3990,9 +3992,6 @@
 			sound-dai = <0xce>;
 		};
 	};
-
-
-
 
 	dw-hdmi-audio {
 		status = "disabled";

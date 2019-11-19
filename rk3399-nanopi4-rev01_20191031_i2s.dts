@@ -1039,11 +1039,12 @@
 		#size-cells = <0x0>;
 		status = "disabled";
 		phandle = <0x105>;
+
 		spidev {
-		    compatible = "spidev";
-		    status = "okay";
-		    reg = <0x0>;
-		    spi-max-frequency = <0x989680>;
+			compatible = "spidev";
+			status = "okay";
+			reg = <0x0>;
+			spi-max-frequency = <0x989680>;
 		};
 	};
 
@@ -1058,13 +1059,13 @@
 		#address-cells = <0x1>;
 		#size-cells = <0x0>;
 		status = "okay";
-                spidev {
-                    compatible = "spidev";
-                    status = "okay";
-                    reg = <0x0>;
-                    spi-max-frequency = <0x989680>;
-                };
 
+		spidev {
+			compatible = "spidev";
+			status = "okay";
+			reg = <0x0>;
+			spi-max-frequency = <0x989680>;
+		};
 	};
 
 	spi@ff1e0000 {
@@ -3974,14 +3975,14 @@
 		};
 	};
 
-        mems-sound {
+	mems-sound {
 		status = "okay";
 		compatible = "simple-audio-card";
 		pinctrl-names = "default";
 		simple-audio-card,name = "admp441,rt5651-codec";
 		simple-audio-card,format = "i2s";
 		simple-audio-card,mclk-fs = <0x100>;
-		
+
 		simple-audio-card,cpu {
 			sound-dai = <0xdf>;
 		};
@@ -3990,9 +3991,6 @@
 			sound-dai = <0xce>;
 		};
 	};
-
-
-
 
 	dw-hdmi-audio {
 		status = "disabled";
